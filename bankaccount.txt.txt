@@ -1,0 +1,121 @@
+/*5) bank account program, you have 3 accounts: savings, current and credit card.
+ * you can withdraw and deposit money only to the current account and u cannot go below 0.
+ * you can only deposit to savings and you can deposit or withdraw from credit card
+ * and you can under 0 in credit card. display appropriate messages.*/
+
+package DrugieZadania;
+
+import javax.swing.JOptionPane;
+
+public class BankAccount {
+	
+	public static void main(String[] args) {
+		
+		int savings = 0;
+		int current = 0;
+		int creditCard = 0;
+		int addition = 0;
+		int withdraw = 0;
+		String decisionProcessString;
+		String additionString;
+		String withdrawString;
+//		boolean decision = false;
+		
+
+		
+		do{
+		decisionProcessString = JOptionPane.showInputDialog
+				("Choose:"
+						+ "\n - to deposit money into current account: 'c',"
+						+ "\n - to withdraw money from current account - 'b'"
+						+ "\n - to deposit money into savings account - 's'"
+						+ "\n - to withdraw money from credit card account - 'd'"
+						+ "\n - to deposit money from credit card account - 'e'");
+		
+
+		
+		if (decisionProcessString.equals("c")){
+			
+			try{
+			
+			additionString = JOptionPane.showInputDialog(null, "How much do you want to deposit?");
+			addition = Integer.parseInt(additionString);
+			current = current + addition;
+			}//try
+			catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "Please input an integer value.");
+			}
+			
+			
+		}
+		else if (decisionProcessString.equals("b")){
+			
+			withdrawString = JOptionPane.showInputDialog(null, "How much do you want to take out?");
+			withdraw = Integer.parseInt(withdrawString);
+			current = current - withdraw;
+			if (current < 0){
+				JOptionPane.showMessageDialog(null, "You can't withdraw that much money! You don't have enough.");
+				current = current + withdraw;
+			}
+//			decision = true;
+					
+			
+		}
+		else if (decisionProcessString.equals("s")){
+			
+			withdrawString = JOptionPane.showInputDialog(null, "How much do you want to take out?");
+			withdraw = Integer.parseInt(withdrawString);
+			current = current - withdraw;
+			if (current < 0){
+				JOptionPane.showMessageDialog(null, "You can't withdraw that much money! You don't have enough.");
+				current = current + withdraw;
+			}
+//			decision = true;
+					
+			
+		}
+		else if (decisionProcessString.equals("d")){
+	
+			withdrawString = JOptionPane.showInputDialog(null, "How much do you want to take out?");
+			withdraw = Integer.parseInt(withdrawString);
+			current = current - withdraw;
+			if (current < 0){
+				JOptionPane.showMessageDialog(null, "You can't withdraw that much money! You don't have enough.");
+				current = current + withdraw;
+		}
+			
+	
+		}
+			else if (decisionProcessString.equals("e")){
+	
+					withdrawString = JOptionPane.showInputDialog(null, "How much do you want to take out?");
+					withdraw = Integer.parseInt(withdrawString);
+					current = current - withdraw;
+					if (current < 0){
+						JOptionPane.showMessageDialog(null, "You can't withdraw that much money! You don't have enough.");
+						current = current + withdraw;
+					}
+
+		}
+		
+		else{
+			break;
+		}//else
+		
+		}//do
+		while(decisionProcessString.equals("c") || decisionProcessString.equals("w"));
+		
+		/*		}//try
+		
+		catch(NullPointerException e){
+			JOptionPane.showMessageDialog(null, "Thank you.");
+		}
+		
+		catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "Please input an integer value.");
+		}*/
+		
+		JOptionPane.showMessageDialog(null, "You have " + current + " on your current account.");
+	}
+
+}
